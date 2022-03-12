@@ -1,2 +1,6 @@
 ---
-# tasks file for haproxy
+
+- name: Install HAProxy Package
+  ansible.builtin.package:
+    name: haproxy
+    state: present

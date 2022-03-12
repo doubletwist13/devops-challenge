@@ -12,3 +12,10 @@
         apply:
           delegate_to: "{{ proxmox_api_host }}"
           throttle: 1
+
+- hosts: haproxyservers
+  gather_facts: false
+  tasks:
+    - name: Configure HAProxy VMs
+      include_role:
+        name: haproxy
