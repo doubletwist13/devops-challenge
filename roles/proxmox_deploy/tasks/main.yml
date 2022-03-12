@@ -9,15 +9,13 @@
     name: "{{ inventory_hostname }}"
     node: "{{ proxmox_api_host }}"
     full: "{{ proxmox_vm_full_clone }}"
-    storage: "{{ proxmox_vm_storage }}"
-    format: "{{ proxmox_vm_disk_type }}"
+    storage: "{{ proxmox_vm_storage if proxmox_vm_full_clone else omit }}"
+    format: "{{ proxmox_vm_disk_type if proxmox_vm_full_clone else 'unspecified' }}"
     timeout: 500
 
-# Ugly but I'm not sure how to have the start VM check that the
-# clones are complete before trying to start. See issue #2
 - name: Pause before starting VMs
   wait_for:
-    delay: 15
+    delay: 5
     timeout: 0
 
 - name: Start VMs
