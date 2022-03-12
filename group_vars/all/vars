@@ -1,0 +1,7 @@
+---
+proxmox_vm_template_name: debian-11-cloud-init-template
+proxmox_api_host: snoopy
+proxmox_api_user: tf_api@pve
+proxmox_api_token_id: tf_api
+proxmox_api_token_secret: "{{ vault_proxmox_api_token_secret }}"
+proxmox_vm_storage: lv_datastore

@@ -1,0 +1,29 @@
+all:
+  children:
+    proxmoxservers:
+      hosts:
+        snoopy:
+          ansible_ssh_host: 10.0.1.6
+          ansible_python_interpreter: '/usr/bin/python3'
+    haproxyservers:
+      hosts:
+        haproxy1.home.fearthepenguin.net:
+          ansible_python_interpreter: '/usr/bin/python3'
+        haproxy2.home.fearthepenguin.net:
+          ansible_python_interpreter: '/usr/bin/python3'
+    appservers:
+      hosts:
+        appserver1.home.fearthepenguin.net:
+          ansible_python_interpreter: '/usr/bin/python3'
+        appserver2.home.fearthepenguin.net:
+          ansible_python_interpreter: '/usr/bin/python3'
+    
+    singlehosttest:
+      hosts:
+        singlehost1.home.fearthepenguin.net:
+          ansible_python_interpreter: '/usr/bin/python3'
+
+    myappnameservers:
+      children:
+        haproxyservers:
+        appservers:

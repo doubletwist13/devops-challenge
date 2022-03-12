@@ -1,0 +1,11 @@
+---
+- hosts: myappnameservers
+  gather_facts: false
+
+  tasks:
+    - name: Destroy VMs
+      include_role:
+        name: proxmox_deploy
+        tasks_from: destroy.yml
+        apply:
+          delegate_to: "{{ proxmox_api_host }}"

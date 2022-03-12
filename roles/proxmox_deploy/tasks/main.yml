@@ -1,0 +1,24 @@
+---
+- name: Clone new VMs from template
+  community.general.proxmox_kvm:
+    api_host: "{{ proxmox_api_host }}"
+    api_user: "{{ proxmox_api_user }}"
+    api_token_id: "{{ proxmox_api_token_id }}"
+    api_token_secret: "{{ proxmox_api_token_secret }}"
+    clone: "{{ proxmox_vm_template_name }}"
+    name: "{{ inventory_hostname }}"
+    node: "{{ proxmox_api_host }}"
+    full: no
+    storage: "{{ proxmox_vm_storage }}"
+    format: "{{ proxmox_vm_disk_type }}"
+    timeout: 500
+
+- name: Start VMs
+  community.general.proxmox_kvm:
+    api_host: "{{ proxmox_api_host }}"
+    api_user: "{{ proxmox_api_user }}"
+    api_token_id: "{{ proxmox_api_token_id }}"
+    api_token_secret: "{{ proxmox_api_token_secret }}"
+    name: "{{ inventory_hostname }}"
+    node: "{{ proxmox_api_host }}"
+    state: started
