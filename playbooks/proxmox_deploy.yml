@@ -13,6 +13,41 @@
           delegate_to: "{{ proxmox_api_host }}"
           throttle: 1
 
+# Make sure the ansible user exists and has our ssh key
+- hosts: myappnameservers
+  gather_facts: false
+  remote_user: root
+  
+  tasks:
+    - name: Add ansible group
+      ansible.builtin.group:
+        name: ansible
+        state: present
+
+    - name: Add ansible user
+      ansible.builtin.user:
+        name: ansible
+        group: ansible
+        password: "!!"
+        comment: Ansible user
+        createhome: true
+        state: present
+
+    - name: Add current user's SSH key to ansible user authorized_keys
+      ansible.posix.authorized_key:
+        user: ansible
+        state: present
+        key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+
+    - name: Enable ansible user to use sudo without a password
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: '^ansible ALL='
+        line: 'ansible ALL=(ALL) NOPASSWD: ALL'
+        validate: '/usr/sbin/visudo -cf %s'
+
+
 - hosts: haproxyservers
   gather_facts: false
   tasks:

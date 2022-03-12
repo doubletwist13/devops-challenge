@@ -1,6 +1,7 @@
 
 # Prerequisites
 
-- Template has some basic packages and the 'ansible' user with SSH key for the ansible controller
+- Template exists with some basic packages and the user on the controller can log in as root
+- 
 
 
