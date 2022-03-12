@@ -10,3 +10,10 @@
   ansible.builtin.template:
     src: "files/haproxy.cfg.j2"
     dest: /etc/haproxy/haproxy.cfg
+    notify: Restart HAProxy
+
+- name: Ensure HAProxy service is running
+  ansible.builtin.service:
+    name: haproxy
+    sate: started
+    enabled: true
