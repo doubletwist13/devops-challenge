@@ -7,4 +7,5 @@
     api_token_secret: "{{ proxmox_api_token_secret }}"
     name: "{{ inventory_hostname }}"
     node: "{{ proxmox_api_host }}"
+    force: true
     state: absent
