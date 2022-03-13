@@ -6,7 +6,9 @@ A brief description of the role goes here.
 Requirements
 ------------
 
-- Role needs a group var 'backend_group_name' defined outside of the role, so it knows which inventory group contains the list of back-end app servers. 
+ Required vars:
+  - backend_group_name - (scope: proxy servers) so haproxy knows what servers to add to the list of backend servers.
+  - backend_app_port - (scope: app servers) so haproxy knows what port the backend app is listening on
 
 Role Variables
 --------------
