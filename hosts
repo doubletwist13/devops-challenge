@@ -9,20 +9,11 @@ all:
       hosts:
         haproxy1.home.fearthepenguin.net:
           ansible_python_interpreter: '/usr/bin/python3'
-        haproxy2.home.fearthepenguin.net:
-          ansible_python_interpreter: '/usr/bin/python3'
     appservers:
       hosts:
         appserver1.home.fearthepenguin.net:
           ansible_python_interpreter: '/usr/bin/python3'
-        appserver2.home.fearthepenguin.net:
-          ansible_python_interpreter: '/usr/bin/python3'
     
-    singlehosttest:
-      hosts:
-        singlehost1.home.fearthepenguin.net:
-          ansible_python_interpreter: '/usr/bin/python3'
-
     myappnameservers:
       children:
         haproxyservers:
