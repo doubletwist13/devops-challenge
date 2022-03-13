@@ -1,5 +1,0 @@
----
-# defaults file for flaskapp
-
-flaskapp_listen_port: 8888
-flaskapp_number_workers: 4

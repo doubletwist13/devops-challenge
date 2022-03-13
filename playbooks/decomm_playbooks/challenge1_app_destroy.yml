@@ -1,0 +1,12 @@
+---
+
+- hosts: challenge1_all_servers
+  gather_facts: false
+
+  tasks:
+    - name: Destroy All Challenge1 VMs
+      include_role:
+        name: proxmox_vm
+        tasks_from: destroy.yml
+        apply:
+          delegate_to: "{{ proxmox_api_host }}"
