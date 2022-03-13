@@ -1,5 +1,4 @@
 {{ ansible_managed }}
-{%- set app_servers = groups[backend_group_name] %}
 
 global
 	log /dev/log	local0
@@ -48,10 +47,11 @@ backend app_servers
     option httpchk HEAD /
     default-server check maxconn 20
 
-		{%- for server in app_servers %}
+		{%- for server in groups[backend_group_name] %}
 		{% set server_ipv4_address = hostvars[server].ansible_default_ipv4.address %}
 		{% set server_longname = hostvars[server].inventory_hostname %}
 		{% set server_shortname = hostvars[server].inventory_hostname_short %}
+		{% set server_app_port = hostvars[server]['backend_app_port'] %}
 
-    server {{ server_longname }} {{ server_ipv4_address }}:8888 cookie {{ server_shortname }}
+    server {{ server_longname }} {{ server_ipv4_address }}:{{ server_app_port }} cookie {{ server_shortname }}
 		{%- endfor %}
