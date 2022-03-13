@@ -5,18 +5,18 @@ all:
         snoopy:
           ansible_ssh_host: 10.0.1.6
           ansible_python_interpreter: '/usr/bin/python3'
-    haproxyservers:
+    challenge1_proxy_servers:
       hosts:
         haproxy1.home.fearthepenguin.net:
           ansible_python_interpreter: '/usr/bin/python3'
           vm_ip: "10.0.1.137/24"
-    appservers:
+    challenge1_app_servers:
       hosts:
         appserver1.home.fearthepenguin.net:
           ansible_python_interpreter: '/usr/bin/python3'
           vm_ip: "10.0.1.139/24"
     
-    myappnameservers:
+    challenge1_all_servers:
       children:
-        haproxyservers:
-        appservers:
+        challenge1_proxy_servers:
+        challenge1_app_servers:

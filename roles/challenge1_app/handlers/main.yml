@@ -1,0 +1,10 @@
+---
+
+- name: reload_systemd_for_{{ challenge1_app_appname }}
+  service:
+
+- name: restart_{{ challenge1_app_appname }}_service
+  service:
+    name: "{{ challenge1_app_appname }}"
+    state: restarted
+    daemon_reload: true
