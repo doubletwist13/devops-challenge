@@ -1,4 +1,12 @@
 ---
+
+# Some vars for my local network
+internal_net_name: home.fearthepenguin.net
+internal_net_gateway: 10.0.1.1
+internal_net_dns: 10.0.1.1
+
+# Some vars needed for proxmox - should be moved elsewhere later so 
+# they are only available to proxmox nodes?
 proxmox_vm_template_name: debian-11-cloud-init-template
 proxmox_api_host: snoopy
 proxmox_api_user: tf_api@pve
