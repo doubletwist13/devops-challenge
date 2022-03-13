@@ -1,0 +1,5 @@
+---
+
+flaskapp_appname: challenge1app
+flaskapp_service_user: challenge
+flaskapp_service_group: challenge
