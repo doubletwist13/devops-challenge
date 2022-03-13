@@ -1,5 +1,5 @@
-Role Name
-=========
+proxmox_vm
+==========
 
 Role to manage Proxmox VMs.  
 Currently supports the following actions:
