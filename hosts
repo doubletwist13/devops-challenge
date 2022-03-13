@@ -15,6 +15,10 @@ all:
         appserver1.home.fearthepenguin.net:
           ansible_python_interpreter: '/usr/bin/python3'
           vm_ip: "10.0.1.139/24"
+        appserver2.home.fearthepenguin.net:
+          ansible_python_interpreter: '/usr/bin/python3'
+          vm_ip: "10.0.1.140/24"
+          backend_app_port: '1234'
     
     challenge1_all_servers:
       children:

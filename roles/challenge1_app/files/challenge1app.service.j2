@@ -10,7 +10,7 @@ Group={{ challenge1_app_service_group }}
 Environment=FLASK_APP={{ challenge1_app_appname }}.py
 Environment=FLASK_CONFIG=production
 WorkingDirectory=/opt/{{ challenge1_app_appname }}
-ExecStart=/usr/bin/gunicorn -b {{ ansible_default_ipv4.address }}:{{ challenge1_app_listen_port }} -w {{ challenge1_app_number_workers }} {{ challenge1_app_appname }}:app
+ExecStart=/usr/bin/gunicorn -b {{ ansible_default_ipv4.address }}:{{ backend_app_port }} -w {{ challenge1_app_number_workers }} {{ challenge1_app_appname }}:app
 Restart=always
 
 [Install]
