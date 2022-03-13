@@ -6,7 +6,9 @@ A brief description of the role goes here.
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+ Required vars:
+  - backend_group_name - (scope: proxy servers) so haproxy knows what servers to add to the list of backend servers.
+  - backend_app_port - (scope: app servers) so haproxy knows what port the backend app is listening on
 
 Role Variables
 --------------

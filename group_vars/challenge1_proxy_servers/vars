@@ -1,0 +1,5 @@
+---
+
+# Name of the inventory group that contains the backend servers for this app.
+# Used by the haproxy role
+backend_group_name: challenge1_app_servers
