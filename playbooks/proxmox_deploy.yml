@@ -31,8 +31,11 @@
         password: "!!"
         comment: Ansible user
         createhome: true
+        shell: /usr/bin/bash
         state: present
 
+    # NOTE: Though it's a public ssh key, this does give access to 
+    # hosts so there's probably a more secure way to do this. 
     - name: Add current user's SSH key to ansible user authorized_keys
       ansible.posix.authorized_key:
         user: ansible
@@ -48,9 +51,19 @@
         validate: '/usr/sbin/visudo -cf %s'
 
 
+# Configure proxy servers
 - hosts: haproxyservers
   gather_facts: false
   tasks:
     - name: Configure HAProxy VMs
       include_role:
         name: haproxy
+
+# configure app servers
+- hosts: appservers
+  gather_facts: true
+  tasks:
+    - name: Configure Flask App VMs
+      include_role:
+        name: flaskapp
+
