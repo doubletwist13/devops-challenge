@@ -1,4 +1,6 @@
 {{ ansible_managed }}
+{%- set app_servers = groups[backend_group_name] %}
+
 global
 	log /dev/log	local0
 	log /dev/log	local1 notice
@@ -37,7 +39,7 @@ defaults
 
 {# Quick and dirty - just doing http for now #}
 frontend {{ inventory_hostname }}
-    bind {{ ansible_default_ipv4.address }}:80
+    bind {{ ansible_default_ipv4.address }}:{{ haproxy_frontend_http_port }}
     default_backend app_servers
 
 backend app_servers
@@ -45,4 +47,11 @@ backend app_servers
     cookie SERVERUSED insert indirect nocache
     option httpchk HEAD /
     default-server check maxconn 20
-    server appserver1. example.com10.0.1.139:8888 cookie appserver1
+
+		{%- for server in app_servers %}
+		{% set server_ipv4_address = hostvars[server].ansible_default_ipv4.address %}
+		{% set server_longname = hostvars[server].inventory_hostname %}
+		{% set server_shortname = hostvars[server].inventory_hostname_short %}
+
+    server {{ server_longname }} {{ server_ipv4_address }}:8888 cookie {{ server_shortname }}
+		{%- endfor %}

@@ -2,3 +2,6 @@
 
 haproxy_package_name: haproxy
 haproxy_service_name: haproxy
+haproxy_frontend_http_port: '80'
+haproxy_frontend_https_port: '443'
+haproxy_backend_app_port: '8888'
