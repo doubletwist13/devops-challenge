@@ -1,0 +1,7 @@
+---
+- hosts: haproxyservers
+  gather_facts: true
+  tasks:
+    - name: Configure HAProxy VMs
+      include_role:
+        name: haproxy
