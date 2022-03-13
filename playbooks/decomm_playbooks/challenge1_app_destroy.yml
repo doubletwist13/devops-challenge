@@ -1,8 +1,17 @@
 ---
 
+# This is dangerous. Therefore this playbook won't run unless you 
+# include "-e TOTALDESTRUCTION=true" at the command line.
+- hosts: localhost
+  become: false
+  tasks:
+    - assert:
+        that:
+          - TOTALDESTRUCTION|bool | default(false)
+        msg: 'WARNING: I will not destroy everything unless you say the magic words!'
+
 - hosts: challenge1_all_servers
   gather_facts: false
-
   tasks:
     - name: Destroy All Challenge1 VMs
       include_role:
