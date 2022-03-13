@@ -1,0 +1,17 @@
+{{ ansible_managed }}
+[Unit]
+Description={{ challenge1_app_appname }} Service
+After=network.target
+
+[Service]
+User={{ challenge1_app_service_user }}
+Group={{ challenge1_app_service_group }}
+
+Environment=FLASK_APP={{ challenge1_app_appname }}.py
+Environment=FLASK_CONFIG=production
+WorkingDirectory=/opt/{{ challenge1_app_appname }}
+ExecStart=/usr/bin/gunicorn -b {{ ansible_default_ipv4.address }}:{{ challenge1_app_listen_port }} -w {{ challenge1_app_number_workers }} {{ challenge1_app_appname }}:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

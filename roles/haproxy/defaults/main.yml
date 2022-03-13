@@ -1,2 +1,4 @@
 ---
-# defaults file for haproxy
+
+haproxy_package_name: haproxy
+haproxy_service_name: haproxy
