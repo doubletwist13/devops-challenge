@@ -67,3 +67,15 @@
       include_role:
         name: flaskapp
 
+# Output the URL of the front-end at the end of the run
+- hosts: haproxyservers
+  become: false
+  tasks:
+    - name: Write URL output to file
+      local_action: copy content="New app can be accessed at http://{{ inventory_hostname }}\n" dest=/tmp/newapp_info.txt
+
+    - name: Print the new URL of the front-end 
+      ansible.builtin.debug:
+        msg: 
+          - "New app can be accessed at http://{{ inventory_hostname }}"
+          - "You can also find this information in /tmp/newapp_info.txt"
