@@ -9,7 +9,7 @@ Group={{ flaskapp_service_group }}
 Environment=FLASK_APP={{ flaskapp_appname }}.py
 Environment=FLASK_CONFIG=production
 WorkingDirectory=/opt/{{ flaskapp_appname }}
-ExecStart=/usr/bin/gunicorn -b {{ ansible_default_ipv4.address }}:8888 -w 4 {{ flaskapp_appname }}:app
+ExecStart=/usr/bin/gunicorn -b {{ ansible_default_ipv4.address }}:{{ flaskapp_listen_port }} -w {{ flaskapp_number_workers }} {{ flaskapp_appname }}:app
 Restart=always
 
 [Install]
