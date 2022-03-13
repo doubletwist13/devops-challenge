@@ -9,4 +9,4 @@ def index():
     return 'Hello world from the app server: {{ inventory_hostname }}'
 
 if __name__ == "__main__":
-    app.run(host='{{ ansible_default_ipv4.address }}', port=8888)
+    app.run(host='{{ ansible_default_ipv4.address }}', port={{ backend_app_port }})
