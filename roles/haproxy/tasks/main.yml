@@ -2,7 +2,7 @@
 
 - name: Install HAProxy Package
   ansible.builtin.package:
-    name: haproxy
+    name: "{{ haproxy_package_name }}"
     state: present
 
 
@@ -10,10 +10,10 @@
   ansible.builtin.template:
     src: "files/haproxy.cfg.j2"
     dest: /etc/haproxy/haproxy.cfg
-  notify: restart_haproxy_service
+  notify: restart_{{ haproxy_service_name }}_service
 
-- name: Ensure HAProxy service is running
+- name: Ensure HAProxy service is running and enabled
   ansible.builtin.service:
-    name: haproxy
+    name: "{{ haproxy_service_name }}"
     state: started
     enabled: true
