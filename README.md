@@ -27,28 +27,36 @@ Requirements
 Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+See readme for each of the following roles for details on variables used by these playbooks.
+- proxmox_vm
+- haproxy
+- challenge1_app
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+The following roles are required:
+- proxmox_vm
+- haproxy
+- challenge1_app
 
-Example Playbook
-----------------
+Playbooks
+---------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+The following commands are used.
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+To deploy the application:
+```
+ansible-playbook -b -i hosts playbooks/challenge1_app_deploy.yml
+```
+
+To decommission/destroy the VMs for this application when you're done.
+   FAILSAFE: If some truthy boolean value for `TOTALDESTRUCTION` is not set, the playbook will fail without deleting VMs.
+```
+ansible-playbook -b -i hosts playbooks/decomm_playbooks/challenge1_app_destroy.yml -e TOTALDESTRUCTION=yes
+```
 
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+MIT
