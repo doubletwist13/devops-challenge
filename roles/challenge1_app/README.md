@@ -1,41 +1,50 @@
-Role Name
-=========
+challenge1_app
+==============
 
-A brief description of the role goes here.
+A role to deploy and configure the challenge1 app
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+- Repos present to allow for install of `python3-flask` and `gunicorn`. Currently uses the default repos available in Debian buster.
 
 Role Variables
 --------------
 
-- Required vars
-  - backend_app_port - (scope: app servers ) - used to set the app listen port
+Default variables (see `defaults/main.yml`)
+```
+challenge1_app_number_workers: 4
+challenge1_app_appname: challenge1app
+challenge1_app_service_user: challenge
+challenge1_app_service_group: challenge
+```
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Additional variables used by templates
+```
+inventory_hostname
+ansible_default_ipv4.address
+backend_app_port 
+```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+NONE
+
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```
+- hosts: challenge1_app_servers
+  gather_facts: true
+  tasks:
+    - name: Configure Challenge1 App VMs
+      include_role:
+        name: challenge1_app
+```
 
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+MIT
