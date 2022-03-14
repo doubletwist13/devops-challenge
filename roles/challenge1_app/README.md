@@ -1,15 +1,21 @@
-Role Name
-=========
+challenge1_app
+==============
 
-A brief description of the role goes here.
+A role to deploy and configure the challenge1 app
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+- Repos present to allow for install of `python3-flask` and `gunicorn`. Currently uses the default repos available in Debian buster.
 
 Role Variables
 --------------
+
+Default variables (see `defaults/main.yml`)
+```
+challenge1_app_number_workers: 4
+```
+
 
 - Required vars
   - backend_app_port - (scope: app servers ) - used to set the app listen port
