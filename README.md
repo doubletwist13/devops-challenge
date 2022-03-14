@@ -50,7 +50,7 @@ To deploy the application:
 ansible-playbook -b -i hosts playbooks/challenge1_app_deploy.yml
 ```
 
-To decommission/destroy the VMs for this application when you're done.
+To decommission/destroy the VMs for this application when you're done.  
    FAILSAFE: If some truthy boolean value for `TOTALDESTRUCTION` is not set, the playbook will fail without deleting VMs.
 ```
 ansible-playbook -b -i hosts playbooks/decomm_playbooks/challenge1_app_destroy.yml -e TOTALDESTRUCTION=yes
