@@ -38,7 +38,6 @@ Variables used by the template from the app server(s) based on `groups[backend_g
 inventory_hostname # Used to set the name of the backend servers.
 backend_app_port  # Used to set the app port for each back-end server.
 ansible_default_ipv4.address  # Sets the IP address for each backend server haproxy forwards to. 
-
 ```
 
 Dependencies
@@ -55,7 +54,6 @@ Example Playbook
     - name: Configure haproxy
       include_role:
         name: haproxy
-
 ```
 
 License
