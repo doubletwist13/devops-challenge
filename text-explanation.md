@@ -94,7 +94,10 @@ Issues
 ------
 
 I've left in place issues for **some** (though certainly not all) of the issues
-and shortcomings I'm aware of. 
+and shortcomings I'm aware of. There's a lot more polish that I would absolutely 
+complete before I'd call it ready for production but I'm hoping that level of
+polish isn't necessary to give you an idea of my abilities and where I still have
+things to learn.
 
 
 Challenge Requirements
