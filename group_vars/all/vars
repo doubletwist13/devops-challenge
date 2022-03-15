@@ -8,7 +8,7 @@ internal_net_dns: 10.0.2.33
 # Some vars needed for proxmox - should be moved elsewhere later so 
 # they are only available to proxmox nodes?
 proxmox_vm_template_name: debian-11-cloud-init-template
-proxmox_api_host: hypervisor1
+proxmox_api_host: proxmox1
 proxmox_api_user: root_api@pve
 proxmox_api_token_id: root_api
 proxmox_api_token_secret: "{{ vault_proxmox_api_token_secret }}"
