@@ -1,4 +1,4 @@
-DevOps Challange Explanation
+DevOps Challenge Explanation
 ============================
 
 
