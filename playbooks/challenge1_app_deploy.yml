@@ -1,7 +1,7 @@
 ---
 
 - hosts: challenge1_all_servers
-  gather_facts: false
+  gather_facts: true
 
 ## NOTE: Throttling to '1' because there seems to be a race condition in the proxmox_kvm module
 ## and it tries to use the same vmid for every VM when called in quick succession.
