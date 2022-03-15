@@ -26,7 +26,6 @@ public roles often results in massive inconsistencies that make everything
 less manageable in the future.
 
 
-
 Technology Choices
 ------------------
 
@@ -54,9 +53,13 @@ The deployment playbook will deploy a single haproxy server that will forward
 requests to one or more back-end application servers. The sample application
 will return the name of the application server that served the request. 
 
-NOTE: The haproxy configuration as written uses cookies to keep connections
+The haproxy configuration as written uses cookies to keep connections
 persistent to the same back-end. To test returning different app server names,
 you can block cookies for the URL and refresh your browser.
+
+NOTE: I have not included my encrypted vault files/password that would be
+required for this to run in another environment.
+
 
 **Decommission**
 
