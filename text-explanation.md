@@ -9,7 +9,7 @@ For the most part I was aiming for a balance between a 'minimal viable product'
 and sufficient polish to display my abilities within the time I had. The 
 repository is not fully production ready but should be sufficient to meet the
 requirements and give you an idea of what I can do. I've left some issues open
-in the repository to show at least *some* of the things that would still need to
+in the repository to show at least **some** of the things that would still need to
 be fixed before this was fully usable.
 
 Whatever I may be working on, I always have a few considerations in mind: 
