@@ -90,6 +90,11 @@ usable.
   it deploys it from a template that will return the name of whichever app server
   it is running on.
 
+Issues
+------
+
+I've left in place issues for **some** (though certainly not all) of the issues
+and shortcomings I'm aware of. 
 
 
 Challenge Requirements
