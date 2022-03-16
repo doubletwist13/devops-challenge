@@ -68,11 +68,11 @@
         name: haproxy
 
 # Output the URL of the front-end at the end of the run
-#- hosts: challenge1_proxy_servers
-  #become: true
-  #tasks:
+- hosts: challenge1_proxy_servers
+  become: false
+  tasks:
     - name: Write Challenge1 front-end URL output to file
-      local_action: copy content="New app can be accessed at http://{{ inventory_hostname }}\n" dest=/tmp/newapp_info.txt
+      local_action: copy content="New app can be accessed at http://{{ inventory_hostname }}\n" dest=/tmp/challenge1_app_info.txt
 
     - name: Print the new Challenge1 front-end URL 
       ansible.builtin.debug:
