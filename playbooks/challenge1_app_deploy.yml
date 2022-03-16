@@ -1,7 +1,7 @@
 ---
 
 - hosts: challenge1_all_servers
-  gather_facts: true
+  gather_facts: false
 
 ## NOTE: Throttling to '1' because there seems to be a race condition in the proxmox_kvm module
 ## and it tries to use the same vmid for every VM when called in quick succession.
@@ -51,15 +51,6 @@
         line: 'ansible ALL=(ALL) NOPASSWD: ALL'
         validate: '/usr/sbin/visudo -cf %s'
 
-
-# Configure proxy servers
-- hosts: challenge1_proxy_servers
-  gather_facts: false
-  tasks:
-    - name: Configure Challenge1 proxy VMs
-      include_role:
-        name: haproxy
-
 # configure app servers
 - hosts: challenge1_app_servers
   gather_facts: true
@@ -68,12 +59,20 @@
       include_role:
         name: challenge1_app
 
+# Configure proxy servers
+- hosts: challenge1_proxy_servers
+  gather_facts: true
+  tasks:
+    - name: Configure Challenge1 proxy VMs
+      include_role:
+        name: haproxy
+
 # Output the URL of the front-end at the end of the run
 - hosts: challenge1_proxy_servers
   become: false
   tasks:
     - name: Write Challenge1 front-end URL output to file
-      local_action: copy content="New app can be accessed at http://{{ inventory_hostname }}\n" dest=/tmp/newapp_info.txt
+      local_action: copy content="New app can be accessed at http://{{ inventory_hostname }}\n" dest=/tmp/challenge1_app_info.txt
 
     - name: Print the new Challenge1 front-end URL 
       ansible.builtin.debug:
