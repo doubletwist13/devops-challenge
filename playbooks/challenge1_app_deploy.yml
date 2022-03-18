@@ -14,6 +14,17 @@
           delegate_to: "{{ proxmox_api_host }}"
           throttle: 1
 
+- hosts: challenge1_all_servers
+  gather_facts: false
+
+  tasks:
+    - name: Wait for ssh port to be available on new servers
+      wait_for:
+        port: 22
+        delay: 2
+      delegate_to: localhost
+      become: false
+
 # Make sure the ansible user exists and has our ssh key
 - hosts: challenge1_all_servers
   gather_facts: false
